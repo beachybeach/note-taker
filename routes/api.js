@@ -11,11 +11,12 @@ router.get("/notes", (req, res) => {
 
 router.post("/notes", (req, res) => {
   const notes = require("../Develop/db/db.json");
+  req.body.id = notes.length.toString();
   const note = req.body;
   notes.push(note);
   fs.writeFileSync(
     path.join(__dirname, "../develop/db/db.json"),
-    JSON.stringify(notes)
+    JSON.stringify(notes, null, 2)
   );
   res.json(notes);
 });
