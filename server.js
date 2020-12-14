@@ -25,7 +25,6 @@ app.use(
     extended: true,
   })
 );
-//TODO: Need note taker to be able to accept new notes. (POST request?)
 //TODO: Need to make it so when the write icon is clicked then an empty field appears for new note title and note body.
 //TODO: When a new note is entered then the save icon appears at the top of the page.
 //TODO: Need notes page to save existing notes in the left hand column after save button is clicked.

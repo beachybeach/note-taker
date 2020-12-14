@@ -4,11 +4,9 @@ const fs = require("fs");
 
 router.get("/notes", (req, res) => {
   console.log("Getting Notes");
-  // grab db.json file and send back in res
-  fs.writeFileSync(
-    path.join(__dirname, "../develop/db/db.json"),
-    res.json(notes);
-  );
+  const notes = require("../Develop/db/db.json");
+  res.json(notes);
+  res.status(200).end();
 });
 
 router.post("/notes", (req, res) => {
