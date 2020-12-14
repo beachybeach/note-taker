@@ -23,11 +23,12 @@ router.post("/notes", (req, res) => {
 router.delete("/notes/:id", (req, res) => {
   const notes = require("../Develop/db/db.json");
   const notesAfterDeletion = notes.filter(({ id }) => {
-    console.log("Checking ID:", id);
-    console.log("Req Param:", req.params.id);
-    return req.params.id != id;
+    return req.params.id !== id;
   });
-  res.json(notesAfterDeletion);
+  fs.writeFileSync(
+    path.join(__dirname, "../develop/db/db.json"),
+    JSON.stringify(notesAfterDeletion, null, 2)
+  );
   res.status(200).end();
 });
 
