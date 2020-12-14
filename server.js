@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 3001;
 const api = require("./routes/api");
 const html = require("./routes/html");
 const bodyParser = require("body-parser");
+const fs = require("fs");
 
 // app.get("/", (req, res) => {
 //   res.sendFile(path.join(__dirname, "./develop/public/index.html"));
