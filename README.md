@@ -4,7 +4,7 @@
 
 ## Screenshot
 
-<img width="500" src="./develop/public/assets/images/screenshot.png">
+<img width="500" src="https://pacific-depths-39968.herokuapp.com/">
 
 This is a note taking app that allows the user to enter and save notes as well as delete them.
 
