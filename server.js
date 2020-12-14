@@ -2,18 +2,28 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 3001;
+const api = require("./routes/api");
+const html = require("./routes/html");
+const bodyParser = require("body-parser");
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "./develop/public/index.html"));
-});
+// app.get("/", (req, res) => {
+//   res.sendFile(path.join(__dirname, "./develop/public/index.html"));
+// });
 
 //links get started button to actual notes page
 app.get("/notes", (req, res) => {
   res.sendFile(path.join(__dirname, "./develop/public/notes.html"));
 });
 
-app.use(express.static("public"));
-
+app.use(express.static("Develop/public"));
+app.use(express.json());
+app.use(bodyParser.json());
+app.use("/api", api);
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
 //TODO: Need note taker to be able to accept new notes. (POST request?)
 //TODO: Need to make it so when the write icon is clicked then an empty field appears for new note title and note body.
 //TODO: When a new note is entered then the save icon appears at the top of the page.
