@@ -3,7 +3,6 @@ const path = require("path");
 const fs = require("fs");
 
 router.get("/notes", (req, res) => {
-  console.log("Getting Notes");
   const notes = require("../Develop/db/db.json");
   res.json(notes);
   res.status(200).end();
@@ -21,9 +20,15 @@ router.post("/notes", (req, res) => {
   res.json(notes);
 });
 
-// router.delete("/notes/:id", (req, res) => {
-//   console.log(req.body);
-//   res.status(200).end();
-// });
+router.delete("/notes/:id", (req, res) => {
+  const notes = require("../Develop/db/db.json");
+  const notesAfterDeletion = notes.filter(({ id }) => {
+    console.log("Checking ID:", id);
+    console.log("Req Param:", req.params.id);
+    return req.params.id != id;
+  });
+  res.json(notesAfterDeletion);
+  res.status(200).end();
+});
 
 module.exports = router;
